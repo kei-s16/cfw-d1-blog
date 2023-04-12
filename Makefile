@@ -1,3 +1,7 @@
+#!/usr/bin/env make
+
+export NO_D1_WARNING := true
+
 DB_NAME = blog
 SCHEMA_DIR = ./schema
 SCHEMA_FILE_SUFFIX = .sql
