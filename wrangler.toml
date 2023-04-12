@@ -1,4 +1,4 @@
-name = "deno-blog-cf"
+name = "cfw-d1-blog"
 main = "src/index.ts"
 compatibility_date = "2023-04-12"
 
