@@ -1,3 +1,8 @@
 name = "deno-blog-cf"
 main = "src/index.ts"
 compatibility_date = "2023-04-12"
+
+[[ d1_databases ]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "blog"
+database_id = "c1ce6cd6-4a4a-40ac-8d2e-1a7c9cf72235"
