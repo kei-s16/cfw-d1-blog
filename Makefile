@@ -17,4 +17,4 @@ seed:
 	npx wrangler d1 execute $(DB_NAME) --command="select name from sqlite_master where type='table';" --local
 
 serve:
-	wrangler dwrangler dev --local --persist
+	npx wrangler dev --local --persist
