@@ -1,22 +1,27 @@
+import { Hono } from 'hono';
+import type { Database } from '@cloudflare/d1';
+
 export interface Env {
-  DB: D1Database;
+  DB: Database;
 }
 
-export default {
-  async fetch(request: Request, env: Env) {
-    const { pathname } = new URL(request.url);
+// TODO: Envに型エラーが出るので直す
+const app = new Hono<Env>();
 
-    if (pathname === "/api/tables/show") {
-      const { results } = await env.DB.prepare(
-        "select name from sqlite_master where type='table'"
-      )
-        .bind()
-        .all();
-      return Response.json(results);
-    }
+app.get('/', () => {
+  return new Response(
+    "Hello World!"
+  );
+});
 
-    return new Response(
-      "Hello World!"
-    );
-  },
-};
+// TODO: contextに型エラーが出るので直す
+app.get('/api/tables/show', async (context) => {
+  const { results } = await context.env.DB.prepare(
+    "select name from sqlite_master where type='table'"
+  )
+    .bind()
+    .all();
+  return Response.json(results);
+});
+
+export default app;
